@@ -97,10 +97,10 @@ const App = () => {
       return "East";
     }
   };
-  useEffect(() => {
+  useEffect((bogota, lyon, paris) => {
     // const appid = "ee63f17d0812e6f2b3f501a3442f7f13";
     const appid = "ac74c8b3a838f1c533379d4c0ce52ac1";
-    async function fetchData() {
+    async function fetchData(bogota, lyon, paris) {
       // Datos de Bogotá
       const bogotaData = await request(
         `https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly&appid=${appid}&units=metric&lat=4.6097&lon=-74.0817`
@@ -159,7 +159,7 @@ const App = () => {
         speed: `${parisData.wind.speed}`,
       });
     }
-    fetchData();
+    fetchData(bogota, lyon, paris);
   }, []);
   return <Container bogota={bogota} lyon={lyon} paris={paris} />;
 };
